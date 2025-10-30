@@ -2,9 +2,10 @@
 
 Este projeto é um clone do layout da página principal do YouTube, focado em utilizar o **CSS Grid** para criar uma estrutura moderna e responsiva. O objetivo principal é demonstrar a aplicação de técnicas de layout avançadas para recriar a interface familiar de uma das maiores plataformas de vídeo do mundo.
 
-![Visão geral do layout do YouTube Clone implementado com CSS Grid]('assets/images/screenshot.png')
+![Visão geral do layout do YouTube Clone implementado com CSS Grid]
 
 ---
+<img width="1200" height="575" alt="screenshot" src="https://github.com/user-attachments/assets/b2418eb9-4edb-4c68-b8c3-00c2bd43cf15" />
 
 ### ✨ Recursos e Foco
 
