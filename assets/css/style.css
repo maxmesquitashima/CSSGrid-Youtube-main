@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* --- Reset e Estrutura Principal --- */
+
+* {
+    /* Garante que padding e border não aumentem o tamanho total do elemento */
+    box-sizing: border-box; 
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    /* CORREÇÃO: Estrutura Grid principal (header fixo, sidebar + main rolável) */
+    display: grid;
+    /* 56px de altura para o header e o restante (1fr) para o conteúdo */
+    grid-template-rows: 56px 1fr; 
+    /* 218px para a sidebar e o restante (1fr) para o main */
+    grid-template-columns: 218px 1fr; 
+    grid-template-areas: 
+        "header header" 
+        "sidebar main";
+    /* CORREÇÃO: Altura mínima de 100% da viewport */
+    min-height: 100vh; 
+}
+
+header {
+    grid-area: header;
+    /* CORREÇÃO: Garante que o header fique no topo mesmo com scroll */
+    position: sticky; 
+    top: 0;
+    z-index: 10; /* Garante que fique acima de outros elementos */
+    background: #FFF; 
+}
+
+aside {
+    grid-area: sidebar;
+    /* CORREÇÃO: Sidebar fixa ao lado e permite scroll se necessário */
+    position: sticky; 
+    top: 56px; /* Começa logo abaixo do header */
+    height: calc(100vh - 56px); /* Altura restante da viewport */
+    overflow-y: auto; /* Permite scroll vertical na sidebar */
+    padding: 24px 0 24px 24px; /* Padding ajustado */
+}
+
+main {
+    background-color: #F8F8F8;
+    grid-area: main;
+    /* CORREÇÃO: Permite que o conteúdo principal role */
+    overflow-y: auto; 
+    padding: 0 0 50px 0; 
+}
+
+/* --- Estilização do Header --- */
+
+.container-header {
+    display: flex;
+    height: 56px;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFF;
+    padding: 0px 24px;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+    cursor: pointer;
+}
+
+.center {
+    display: flex;
+    width: 600px;
+    height: 40px;
+}
+
+.retangulo-1 {
+    /* Permite que o campo de busca ocupe o espaço restante no .center */
+    flex-grow: 1; 
+    height: 40px;
+    padding: 0 6px; 
+    border: 1px solid #CCC;
+    border-right: none; /* Remove a borda direita para se fundir com o retângulo 2 */
+    border-radius: 40px 0 0 40px; /* Arredondamento apenas na esquerda */
+    box-sizing: border-box;
+    background: #FFF;
+}
+
+.retangulo-2 {
+    display: flex;
+    width: 64px; 
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #CCC;
+    border-radius: 0 40px 40px 0; /* Arredondamento apenas na direita */
+    box-sizing: border-box;
+    background: #F8F8F8;
+    cursor: pointer;
+}
+
+.search {
+    width: 24px;
+    height: 24px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
+    cursor: pointer;
+}
+
+.avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%; /* Garante que seja um círculo perfeito */
+    background-image: url('../images/avatar.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* --- Estilização da Sidebar (aside) --- */
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.item{
+    display: flex;
+    width: 100%;
+    height: 40px;
+    gap: 16px;
+    font-size: 14px;
+    font-weight: 400;
+    align-items: center;
+    padding: 0 12px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.2s;
+}
+
+.item:hover {
+    background-color: #eee;
+}
+
+.icons {
+    height: 24px;
+    width: 24px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Estilização da Main (conteúdo principal) --- */
+
+.filter-bar {
+    display: flex;
+    padding: 24px 28px 0;
+    gap: 12px;
+    align-items: center;
+    overflow-x: auto; /* Permite rolagem horizontal */
+    margin-bottom: 24px; 
+}
+
+.filter-bar::-webkit-scrollbar {
+    display: none; /* Opcional: Esconder a barra de rolagem (webkit) */
+}
+
+.filter-btn {
+    padding: 6px 12px;
+    border-radius: 16px;
+    background-color: #E5E5E5;
+    color: #030303;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap; 
+}
+
+.filter-btn.active {
+    background-color: #030303;
+    color: #FFF;
+}
+
+.main-content {
+    display: grid;
+    /* Cria o máximo de colunas de no mínimo 280px que couberem na tela */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    padding: 0 28px 24px 28px; 
+    gap: 16px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    gap: 12px;
+    
+    /* CURSOR: Mudar para pointer */
+    cursor: pointer; 
+    /* EFEITO HOVER: Suavidade na transição */
+    transition: transform 0.2s ease-in-out; 
+}
+
+/* EFEITO HOVER: Leve escala no container do vídeo */
+.content:hover {
+    transform: scale(1.01); 
+}
+
+/* Estilo para a imagem/miniatura */
+.content > div:first-child img { 
+    width: 100%; 
+    height: auto; 
+    border-radius: 12px;
+    
+    /* EFEITO HOVER: Suavidade na transição de sombra */
+    transition: box-shadow 0.2s ease-in-out; 
+}
+
+/* EFEITO HOVER: Sombra na miniatura ao passar o mouse */
+.content:hover > div:first-child img {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+}
+
+.infos {
+    display: flex;
+    gap: 10px;
+    width: 100%; 
+}
+
+.infos > div:first-child img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    gap: 4px;
+}
+
+.titulo {
+    font-size: 16px; 
+    font-weight: 500;
+    line-height: 1.4;
+    max-height: 3.2em; 
+    
+    /* Limita o título a 2 linhas (YouTube style) */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+   -line-clamp: 2; 
+    -webkit-box-orient: vertical;
+}
+
+.subtitulo {
+    font-size: 14px;
+    color: #606060; 
+    font-weight: 400;
+}
+
+.subtitulo div {
+    line-height: 1.2;
+}
+
+/* Adiciona o ponto (•) separador entre a visualização e o tempo */
+.subtitulo > div:nth-child(2)::before {
+    content: "•";
+    margin: 0 4px;
+}
