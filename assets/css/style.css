@@ -256,11 +256,9 @@ main {
     max-height: 3.2em; 
     
     /* Limita o título a 2 linhas (YouTube style) */
+    
     overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-   -line-clamp: 2; 
-    -webkit-box-orient: vertical;
+    line-clamp: 2
 }
 
 .subtitulo {
