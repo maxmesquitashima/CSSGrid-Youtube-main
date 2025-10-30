@@ -28,15 +28,14 @@ Este projeto é um clone do layout da página principal do YouTube, focado em ut
 
 ### 📂 Estrutura de Arquivos
 
-```youtube-clone/ 
-    ├── assets/
+```
+youtube-clone/
+├── assets/
 │   ├── css/
-    │ │  └── style.css # Folha de estilos principal com CSS Grid 
-    │ └── images/ # Diretório com todos os ícones e imagens 
-    ├── index.html # Arquivo principal (a marcação HTML) 
-    └── README.md # Este arquivo```
-
-
+│   │   └── style.css       # Folha de estilos principal
+│   └── images/             # Diretório com todos os ícones e imagens
+├── index.html              # Arquivo principal (a marcação HTML)
+└── README.md               # Este arquivo
 ---
 
 ### Projeto Feito Para o Curso de Formação CSS Web Developer da DIO.
